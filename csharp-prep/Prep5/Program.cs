@@ -11,7 +11,7 @@ class Program
 
         int sqauredNumber = SqaureNumber(userNumber);
 
-        DisplayResults(  name, square);
+        DisplayResults( userName, sqauredNumber);
     }
 
 
