@@ -18,13 +18,14 @@ class Program
         string option = "0";
         do
         {
+            Console.WriteLine ("Welocome To Your Digital Journal 🌈☀️🌹!!!");//This line is a little cheesy but I think it is cute
             Console.WriteLine("Please select an option below: ");
-            Console.WriteLine("1.Add entry");
-            Console.WriteLine("2.Display entry");
-            Console.WriteLine("3.Load from file");
-            Console.WriteLine("4.Save to file");
-            Console.WriteLine("5.Quit");
-            Console.Write("What would you like to do?");
+            Console.WriteLine("1.Add entry 📝");
+            Console.WriteLine("2.Display entry 📲");
+            Console.WriteLine("3.Load from file 🖨");
+            Console.WriteLine("4.Save to file 💾");
+            Console.WriteLine("5.Quit❎");
+            Console.Write("What would you like to do?😀");
 
             option =Console.ReadLine();
 
