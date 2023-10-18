@@ -1,9 +1,10 @@
 using System;
 using System.Dynamic;
 
-public class PromptGenerator{
-//Instead of a list I used an array, I learnedh how to make one on C# from a video but I do not remember the vlogger.
-string[]  prompts  = new string[] {
+public class PromptGenerator
+{
+    //Instead of a list I used an array, I learnedh how to make one on C# from a video but I do not remember the vlogger.
+    string[] prompts = new string[] {
         "WWhat did I enjoy the most about my day today?",
         "What would I do over today if I had the chance? ",
         "How did I see the hand of the Lord in my day today?",
@@ -14,23 +15,23 @@ string[]  prompts  = new string[] {
 
     };
 
-Random rand = new Random();
+    Random rand = new Random();
 
-public string GetRandomPrompt() // I spent a lot of time on this one because I was confused on how a string suddenly acts like a method. After some reading, I kind of get it. This was the most widely used method to get randomprompt, if there is an easier way I would like to know it. 
-{int randomIndex = rand.Next(0, prompts.Length);
+    public string GetRandomPrompt() // I spent a lot of time on this one because I was confused on how a string suddenly acts like a method. After some reading, I kind of get it. This was the most widely used method to get randomprompt, if there is an easier way I would like to know it. 
+    {
+        int randomIndex = rand.Next(0, prompts.Length);
 
-string getRandomPrompt = prompts[randomIndex];
-return getRandomPrompt;
-        
+        string getRandomPrompt = prompts[randomIndex];
+        return getRandomPrompt;
+
+    }
 }
-}
 
 
 
 
 
 
-  
-  
-    
- 
+
+
+

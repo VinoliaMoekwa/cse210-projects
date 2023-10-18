@@ -2,6 +2,7 @@ using System;
 using System.Reflection.Metadata;
 using System.Xml.Linq;
 using System.Xml.Serialization;
+using System.IO;
 
 public class Entry  //I added twith the Journal Class because it was too small to have its own program, I also couldnt find a way to add it inside the journal Class. I read that doing it like this is okay so I hope its really okay.
 {
@@ -10,13 +11,15 @@ public class Entry  //I added twith the Journal Class because it was too small t
     public string Response { get; set; }
 }
 
-public class Journal{
+public class Journal
+{
 
     public List<Entry> entries = new List<Entry>();
-    
 
-public void AddEntry(string prompt,string response){
-    Entry entry = new Entry
+
+    public void AddEntry(string prompt, string response)
+    {
+        Entry entry = new Entry
         {
             Date = DateTime.Now,
             Prompt = prompt,
@@ -24,46 +27,46 @@ public void AddEntry(string prompt,string response){
         };
 
         entries.Add(entry);
-}
+    }
 
-public void DisplayEntry(){
-    Console.WriteLine("/n Entries:");
-    foreach( var entry in entries)
+    public void DisplayEntry()
+    {
+        Console.WriteLine("/n Entries:");
+        foreach (var entry in entries)
 
-    Console.WriteLine($"Date: {entry.Date}\nPrompt: {entry.Prompt}\n Response: {entry.Response}\n");
+            Console.WriteLine($"Date: {entry.Date}\nPrompt: {entry.Prompt}\n Response: {entry.Response}\n");
 
-}
+    }
 
-public void LoadFromFile(string filename)
-{
+    public void LoadFromFile(string filename)
+    {
+        using (var reader = new StreamReader(filename))
+        {
+            foreach (var entry in entries)
 
-;//rethink this
-using (var reader =new StreamReader(filename))
-{
-    foreach( var entry in entries)
-
-    Console.WriteLine($"Date{entry.Date}\nPrompt:{entry.Prompt}\n Response:{entry.Response}\n");
-
-    
-}
-Console.WriteLine($"Journal loaded from  {filename }");
-}
+                Console.WriteLine($"Date: {entry.Date}\nPrompt:{entry.Prompt}\n Response:{entry.Response}\n");
 
 
-public void SaveToFile(string filename)
-{   
-    using (var writer = new StreamWriter(filename))
-    
-    {foreach( var entry in entries)
-        Console.WriteLine($"Date{entry.Date}\nPrompt:{entry.Prompt}\n Response:{entry.Response}\n");
+        }
+        Console.WriteLine($"Journal loaded from  {filename}");
+    }
 
-    Console.WriteLine($"Journal saved to {filename }");
-
-    
-}
+    public void SaveToFile(string filename)
+    {
+        using (StreamWriter writer = new StreamWriter(filename))
+        {
+            foreach (Entry entry in entries)
+            {
+                string line = $"{entry.Date.ToString("yyyy-MM-dd HH:mm:ss")},{entry.Prompt}";
+                writer.WriteLine(line);
+            }
+        }
     }
 
 }
 
 
- 
+
+
+
+
